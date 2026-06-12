@@ -32,12 +32,10 @@ async function handleModels() {
 }
 
 async function handleChatCompletions(request, env) {
-  const authHeader = request.headers.get("Authorization");
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return json({ error: { message: "Invalid API key", type: "invalid_request_error" } }, 401);
+  const apiKey = env.SILICONFLOW_API_KEY;
+  if (!apiKey) {
+    return json({ error: { message: "API key not configured", type: "api_error" } }, 500);
   }
-
-  const apiKey = authHeader.slice(7);
 
   let body;
   try {
