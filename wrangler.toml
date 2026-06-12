@@ -1,0 +1,10 @@
+name = "cfm-worker"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# API Key 通过以下方式配置（二选一）：
+# 方式1: 使用 wrangler secret（推荐，生产环境）
+#   wrangler secret put SILICONFLOW_API_KEY
+# 方式2: 在下方添加（仅开发测试）
+# [vars]
+# SILICONFLOW_API_KEY = "sk-xxx"
